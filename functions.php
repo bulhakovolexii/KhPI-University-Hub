@@ -76,6 +76,16 @@ function child_theme_setup_editor_features()
 {
     add_theme_support('editor-color-palette', [
         [
+            'name' => __('Red', 'university-hub'),
+            'slug' => 'red',
+            'color' => '#a0001b', // #e4572e => #a0001b
+        ],
+        [
+            'name' => __('Yellow', 'university-hub'),
+            'slug' => 'yellow',
+            'color' => '#fbb800', // #f4a024 => #fbb800
+        ],
+        [
             'name' => __('Black', 'university-hub'),
             'slug' => 'black',
             'color' => '#2a2a2a', // #000 => #2a2a2a
@@ -115,16 +125,6 @@ function child_theme_setup_editor_features()
             'slug' => 'green',
             'color' => '#00a085', // #77a464 => #00a085
         ],
-        [
-            'name' => __('Red', 'university-hub'),
-            'slug' => 'red',
-            'color' => '#a0001b', // #e4572e => #a0001b
-        ],
-        [
-            'name' => __('Yellow', 'university-hub'),
-            'slug' => 'yellow',
-            'color' => '#fbb800', // #f4a024 => #fbb800
-        ],
     ]);
 }
 add_action('after_setup_theme', 'child_theme_setup_editor_features', 20);
@@ -163,6 +163,13 @@ function add_theme_body_class($classes)
 }
 add_filter('body_class', 'add_theme_body_class');
 
+function active_theme_preset()
+{
+    do_action('qubely_active_theme_preset');
+}
+
+add_action('after_switch_theme', 'active_theme_preset');
+
 /**
  * Change http links to https when inserting files
  */
@@ -172,3 +179,13 @@ function force_protocol_relative($content)
     $content = str_replace('http://', 'https://', $content);
     return $content;
 }
+
+/**
+ * Dashicons connections
+ */
+
+function load_dashicons()
+{
+    wp_enqueue_style('dashicons');
+}
+add_action('wp_enqueue_scripts', 'load_dashicons');
