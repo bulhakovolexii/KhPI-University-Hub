@@ -405,7 +405,7 @@ a.custom-logo-link {
 }
 
 .top-news-title::after {
-    border-right: 16px solid $orange;
+    border-right: 16px solid var(--orange);
     border-left: none;
     float: left;
     left: -16px;
@@ -671,7 +671,7 @@ a.more::after {
 --------------------------------------------------------------*/
 #front-page-home-sections .section-title,
 #university-hub-front-page-widgets .widget-title {
-    border-right: 4px solid $orange;
+    border-right: 4px solid var(--orange);
     border-left: none;
     padding-right: 15px;
     padding-left: 0;
@@ -1068,7 +1068,7 @@ blockquote {
 
 .wp-block-quote:not(.is-large):not(.is-style-large),
 blockquote {
-    border-right: 5px solid $blue;
+    border-right: 5px solid var(--blue);
     border-left: none;
 }
 
